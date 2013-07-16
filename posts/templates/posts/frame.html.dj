@@ -1,0 +1,32 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+        <link type="text/css" rel="stylesheet" href="{% static "posts/frame.css" %}">
+    </head>
+    <body>
+        <div id="header">
+
+        </div>
+        <div id="lsidebar">
+            <div id="user_info">
+
+            </div>
+            <div id="followers">
+
+            </div>
+        </div>
+        <div id="posts">
+
+        </div>
+        <div id="rsidebar">
+
+        </div>
+        <div id="footer">
+
+        </div>
+    </body>
+</html>
+
