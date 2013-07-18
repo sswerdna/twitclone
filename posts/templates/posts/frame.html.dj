@@ -2,15 +2,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+        {% block page_js %}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+        {% endblock %}
+        {% block page_css %}
+        <link type="text/css" rel="stylesheet" href="{% static "posts/reset.css" %}">
         <link type="text/css" rel="stylesheet" href="{% static "posts/frame.css" %}">
+        {% endblock %}
     </head>
     <body>
         <div id="header">
-
+            <img src="{% static "posts/logo.jpg" %}" alt="Posts"/>
+            <h1>Welcome to Posts!</h1>
+            <div id="r_header">
+                <form>
+                    <input type="text"></input>
+                    <input type="submit" value="Search">
+                </form>
+                <br />
+                {% if user %}
+                <p>Welcome back, {{ user }}</p>
+                <br />
+                <button id="logout">Log Out</button>
+                {% else %}
+                <p><a>Log In</a> or </p>
+                <p><a>Create an Account</a></p>
+                {% endif %}
+            </div>
         </div>
-        <div id="lsidebar">
+        <div id="lsidebar" class="content">
             <div id="user_info">
 
             </div>
@@ -18,15 +38,16 @@
 
             </div>
         </div>
-        <div id="posts">
+        <div id="posts" class="content">
 
         </div>
-        <div id="rsidebar">
+        <div id="rsidebar" class="content">
 
         </div>
         <div id="footer">
-
+            <p>Powered by <a href="http://www.djangoproject.com">Django</a>.</p>
+            <p>Authored By Stephen Andrews</p>
         </div>
+        
     </body>
 </html>
-
