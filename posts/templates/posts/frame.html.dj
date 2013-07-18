@@ -12,34 +12,38 @@
     </head>
     <body>
         <div id="header">
-            <img src="{% static "posts/logo.jpg" %}" alt="Posts"/>
+            <img src="{% static "posts/logo.png" %}" alt="Posts"/>
             <h1>Welcome to Posts!</h1>
             <div id="r_header">
-                <form>
-                    <input type="text"></input>
-                    <input type="submit" value="Search">
-                </form>
-                <br />
                 {% if user %}
-                <p>Welcome back, {{ user }}</p>
-                <br />
+                <p id="greeting">Welcome back, {{ user }}</p>
                 <button id="logout">Log Out</button>
                 {% else %}
-                <p><a>Log In</a> or </p>
-                <p><a>Create an Account</a></p>
+                <p id="no_acc"><a href="{% url 'login' %}">Log In</a> or 
+                <a href="{% url 'create' %}">Create an Account</a></p>
                 {% endif %}
             </div>
         </div>
         <div id="lsidebar" class="content">
             <div id="user_info">
-
+                {% block user_info %}
+                {% endblock %}
             </div>
-            <div id="followers">
-
+            <div id="follow">
+                <p id='searchtext'>Search for Users</p>
+                <form id='search'>
+                    <input type="text" name="query">
+                    <input type="submit" value="Search">
+                </form>
+                <hr>
+                {% block follow %}
+                {% endblock %}
             </div>
         </div>
         <div id="posts" class="content">
 
+            {% block posts %}
+            {% endblock %}
         </div>
         <div id="rsidebar" class="content">
 

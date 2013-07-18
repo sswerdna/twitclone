@@ -6,6 +6,7 @@ from twitclone import views
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^login/$', views.login),
-    url(r'^posts/', include('posts.urls')),
+    url(r'^login/$', views.login_page, name='login'),
+    url(r'^create/$', views.create, name='create'),
+    url(r'^posts/', include('posts.urls', namespace="posts")),
 )

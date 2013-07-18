@@ -1,0 +1,28 @@
+{% extends "posts/frame.html.dj" %}
+
+{% block page_js%}
+{% endblock %}
+
+{% block page_css %}
+{% endblock %}
+
+{% block user_info %}
+<p>First Name: {{ user.first_name }}</p>
+<p>Last Name: {{ user.last_name }}</p>
+<p>Description: {{ user.description }}
+{% endblock %}
+
+{% block follow %}
+{# This is a profile page, so this is a list of the people following this person #}
+<p> Followers </p>
+{% for uname in unames %}
+    <p> {{ uname }} </p>
+{% endfor %}
+{% endblock %}
+
+{% block posts %}
+{% for post in posts %}
+<div class="post">
+    <h2> {{ user.first_name }} {{ user.last_name }}</h2>
+    <p> {{ post.content }} </p>
+{% endblock %}

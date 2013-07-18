@@ -6,11 +6,12 @@
         <link type="text/css" rel="stylesheet" href="{% static "posts/login.css"%}">
     </head>
     <body>
-        <div id="Welcome">
-            <p> Welcome To Posts!</p>
+        <div id="welcome">
+            <h1> Welcome To Posts!</h1>
         </div>
         <div id="login">
-            <form>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
                 <input type="text" name="username">
                 <input type="password" name="password">
                 <input type="submit" value="Log In">
