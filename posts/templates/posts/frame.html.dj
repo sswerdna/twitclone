@@ -15,8 +15,12 @@
             <img src="{% static "posts/logo.png" %}" alt="Posts"/>
             <h1>Welcome to Posts!</h1>
             <div id="r_header">
-                <p id="greeting">Welcome back, logged_in_user</p>
+                {% if current_user %} 
+                <p id="greeting">Welcome back, {{ current_user }}</p>
                 <button id="logout">Log Out</button>
+                {% else %}
+                <p><a href={% url 'login' %}>Log In</a> or <a href="{% url 'create' %}">Create an Account</a></p>
+                {% endif %}
             </div>
         </div>
         <div id="lsidebar" class="content">
@@ -26,7 +30,7 @@
             </div>
             <div id="follow">
                 <p id='searchtext'>Search for Users</p>
-                <form id='search'>
+                <form id='search' method='GET'>
                     <input type="text" name="query">
                     <input type="submit" value="Search">
                 </form>

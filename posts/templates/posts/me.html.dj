@@ -1,0 +1,45 @@
+{% extends "posts/frame.html.dj" %}
+{% load static %}
+
+{% block page_js %}
+{% endblock %}
+
+{% block page_css %}
+        <link type="text/css" rel="stylesheet" href="{% static "posts/profile.css" %}">
+{% endblock %}
+
+{% block user_info %}
+                <p>First Name: {{ user.first_name }}</p>
+                <p>Last Name: {{ user.last_name }}</p>
+                <p>Description: {{ description }}</p>
+{% endblock %}
+
+{% block follow %}
+{# list all the people the user is following #}
+        <p>Following</p>
+        {% for followed in following %}
+        <p><a href='{% url "posts:profile" username=followed.user.username %}'>{{ followed.user.username }}</a></p>
+{% endfor %}
+{% endblock %}
+
+{% block posts %}
+<div id="post_box">
+    <p>Make a Post!</p>
+    <form id="make_post" method="POST" action="{% url 'posts:me' %}">
+        <textarea cols=70 rows=8 name="new_post"></textarea>
+        <br />
+        <input type="submit" value="Post!">
+    </form>
+</div>
+{% if posts %}
+{% for post in posts %}
+<div class="post">
+    <h2> {{ user.first_name }} {{ user.last_name }}</h2>
+    <p> {{ post.content }} </p>
+    <p> {{ post.createdDate }}</p>
+</div>
+{% endfor %}
+{% else %}
+<h2> No posts yet!</h2>
+{% endif %}
+{% endblock %}

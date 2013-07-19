@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/stephen/sources/web/django/twitclone/test.db',
+        'NAME': '/home/sdandre2/sources/web/django/twitclone/test.db',
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
