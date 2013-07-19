@@ -1,28 +1,37 @@
 {% extends "posts/frame.html.dj" %}
+{% load static %}
 
-{% block page_js%}
+{% block page_js %}
 {% endblock %}
 
 {% block page_css %}
+        <link type="text/css" rel="stylesheet" href="{% static "posts/profile.css" %}">
 {% endblock %}
 
 {% block user_info %}
 <p>First Name: {{ user.first_name }}</p>
 <p>Last Name: {{ user.last_name }}</p>
-<p>Description: {{ user.description }}
+<p>Description: {{ description}}</p>
 {% endblock %}
 
 {% block follow %}
 {# This is a profile page, so this is a list of the people following this person #}
 <p> Followers </p>
-{% for uname in unames %}
-    <p> {{ uname }} </p>
+{% for follower in followers %}
+    <p> {{ follower.user.username }} </p>
 {% endfor %}
 {% endblock %}
 
 {% block posts %}
+{% if posts %}
 {% for post in posts %}
 <div class="post">
     <h2> {{ user.first_name }} {{ user.last_name }}</h2>
     <p> {{ post.content }} </p>
+    <p> {{ post.createdDate }}</p>
+</div>
+{% endfor %}
+{% else %}
+<h2> No posts yet!</h2>
+{% endif %}
 {% endblock %}

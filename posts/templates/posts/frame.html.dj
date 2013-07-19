@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {% block page_js %}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        {% block page_js %}
         {% endblock %}
-        {% block page_css %}
         <link type="text/css" rel="stylesheet" href="{% static "posts/reset.css" %}">
         <link type="text/css" rel="stylesheet" href="{% static "posts/frame.css" %}">
+        {% block page_css %}
         {% endblock %}
     </head>
     <body>
@@ -15,13 +15,8 @@
             <img src="{% static "posts/logo.png" %}" alt="Posts"/>
             <h1>Welcome to Posts!</h1>
             <div id="r_header">
-                {% if user %}
-                <p id="greeting">Welcome back, {{ user }}</p>
+                <p id="greeting">Welcome back, logged_in_user</p>
                 <button id="logout">Log Out</button>
-                {% else %}
-                <p id="no_acc"><a href="{% url 'login' %}">Log In</a> or 
-                <a href="{% url 'create' %}">Create an Account</a></p>
-                {% endif %}
             </div>
         </div>
         <div id="lsidebar" class="content">
