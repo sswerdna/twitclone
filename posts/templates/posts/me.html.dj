@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block user_info %}
-                <p>First Name: {{ user.first_name }}</p>
-                <p>Last Name: {{ user.last_name }}</p>
-                <p>Description: {{ description }}</p>
+                <p>First Name: {{ user.user.first_name }}</p>
+                <p>Last Name: {{ user.user.last_name }}</p>
+                <p>Description: {{ user.description }}</p>
 {% endblock %}
 
 {% block follow %}
@@ -26,7 +26,8 @@
 <div id="post_box">
     <p>Make a Post!</p>
     <form id="make_post" method="POST" action="{% url 'posts:me' %}">
-        <textarea cols=70 rows=8 name="new_post"></textarea>
+        {% csrf_token %}
+        <textarea cols=70 rows=8 name="post_text"></textarea>
         <br />
         <input type="submit" value="Post!">
     </form>
@@ -34,7 +35,7 @@
 {% if posts %}
 {% for post in posts %}
 <div class="post">
-    <h2> {{ user.first_name }} {{ user.last_name }}</h2>
+    <h2> {{ user.user.first_name }} {{ user.user.last_name }}</h2>
     <p> {{ post.content }} </p>
     <p> {{ post.createdDate }}</p>
 </div>
